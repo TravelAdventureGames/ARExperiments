@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FaceLandmarkDetectionViewController" customModule="FacialLandmarks" customModuleProvider="target">
+            <connections>
+                <outlet property="mainView" destination="i5M-Pr-FkT" id="Rxn-Na-ql4"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="FaceLandmarkDetectView" customModule="FacialLandmarks" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4xo-hL-iB8">
+                    <rect key="frame" x="10" y="107" width="355" height="473"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4xo-hL-iB8" secondAttribute="height" multiplier="3:4" id="SS3-3J-zzB"/>
+                    </constraints>
+                </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="y3c-GM-78a">
+                    <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
+                </activityIndicatorView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vj3-zw-iw6">
+                    <rect key="frame" x="135.5" y="600" width="104" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="si5-dp-Fd7"/>
+                    </constraints>
+                    <state key="normal" title="Begin Opnieuw"/>
+                    <connections>
+                        <action selector="tryAgainButtonClick:" destination="-1" eventType="touchUpInside" id="qIc-n0-C94"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4xo-hL-iB8" secondAttribute="trailing" constant="10" id="1c2-mw-4fU"/>
+                <constraint firstItem="y3c-GM-78a" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="2vJ-EP-doS"/>
+                <constraint firstItem="4xo-hL-iB8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="CrI-Hq-aS7"/>
+                <constraint firstItem="4xo-hL-iB8" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Tgb-wn-XXr"/>
+                <constraint firstItem="vj3-zw-iw6" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="UFo-Es-W4H"/>
+                <constraint firstItem="vj3-zw-iw6" firstAttribute="top" secondItem="4xo-hL-iB8" secondAttribute="bottom" constant="20" id="Yft-J1-oi4"/>
+                <constraint firstItem="y3c-GM-78a" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="lX8-H3-t3W"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <connections>
+                <outlet property="activityIndicator" destination="y3c-GM-78a" id="eF6-Yr-0vH"/>
+                <outlet property="imageView" destination="4xo-hL-iB8" id="1h7-7h-tAA"/>
+                <outlet property="tryAgainButton" destination="vj3-zw-iw6" id="0t8-Qw-Vy4"/>
+            </connections>
+            <point key="canvasLocation" x="35.5" y="54.5"/>
+        </view>
+    </objects>
+</document>
