@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Vision
 
 class FaceLandmarkDetectionViewController: UIViewController {
 
     // MARK: Properties
 
     @IBOutlet var mainView: FaceLandmarkDetectView!
+    var obs: [VNFaceObservation] = []
     
     private let image: UIImage
 
@@ -39,7 +41,8 @@ class FaceLandmarkDetectionViewController: UIViewController {
                 self.mainView.stopLoading()
                 if let observations = observations {
                     // Success
-                    self.mainView.render(self.image, with: observations)
+                    self.obs = observations
+                    self.mainView.render(self.image, with: self.obs)
                 } else {
                     // Error
                     self.presentErrorAlert()
@@ -60,7 +63,49 @@ class FaceLandmarkDetectionViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
+    @IBAction func renderAgain(_ sender: Any) {
+        self.mainView.render(self.image, with: obs)
+    }
     @IBAction func tryAgainButtonClick(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    @IBAction func elChanged(_ sender: Any) {
+        mainView.leftEyeOn = !mainView.leftEyeOn
+    }
+    @IBAction func lebChanged(_ sender: Any) {
+        mainView.leftEyebrowOn = !mainView.leftEyebrowOn
+    }
+    @IBAction func lpCHanged(_ sender: Any) {
+        mainView.leftPupilOn = !mainView.leftPupilOn
+    }
+    @IBAction func reChanged(_ sender: Any) {
+        mainView.rightEyeOn = !mainView.rightEyeOn
+    }
+    @IBAction func rebChanged(_ sender: Any) {
+        mainView.rightEyebrowOn = !mainView.rightEyebrowOn
+    }
+    @IBAction func rpChanged(_ sender: Any) {
+        mainView.rightPupilOn = !mainView.rightPupilOn
+    }
+    @IBAction func ilChanged(_ sender: Any) {
+        mainView.innerLipsOn = !mainView.innerLipsOn
+    }
+    @IBAction func olChanged(_ sender: Any) {
+        mainView.outerLipsOn = !mainView.outerLipsOn
+    }
+    @IBAction func mlChanged(_ sender: Any) {
+        mainView.mediaLineOn = !mainView.mediaLineOn
+    }
+    @IBAction func noChanged(_ sender: Any) {
+        mainView.noseOn = !mainView.noseOn
+    }
+    @IBAction func nocChanged(_ sender: Any) {
+        mainView.noseCrestOn = !mainView.noseCrestOn
+    }
+    @IBAction func fcChanged(_ sender: Any) {
+        mainView.facecontourOn = !mainView.facecontourOn
+    }
+    
+    
+
 }

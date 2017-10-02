@@ -398,7 +398,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 85J9C69P9Z;
+				DEVELOPMENT_TEAM = 94E429579Y;
 				INFOPLIST_FILE = "$(SRCROOT)/FacialLandmarksTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kairadiagne.FacialLandmarks;
@@ -413,7 +413,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 85J9C69P9Z;
+				DEVELOPMENT_TEAM = 94E429579Y;
 				INFOPLIST_FILE = "$(SRCROOT)/FacialLandmarksTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kairadiagne.FacialLandmarks;
