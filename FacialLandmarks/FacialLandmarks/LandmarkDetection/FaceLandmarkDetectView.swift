@@ -17,18 +17,18 @@ class FaceLandmarkDetectView: UIView {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tryAgainButton: UIButton!
 
-    var facecontourOn = true
-    var leftEyeOn = true
-    var leftEyebrowOn = true
-    var leftPupilOn = true
-    var innerLipsOn = true
-    var noseOn = true
-    var outerLipsOn = true
-    var rightEyeOn = true
-    var rightEyebrowOn = true
-    var rightPupilOn = true
-    var noseCrestOn = true
-    var mediaLineOn = true
+    var facecontourOn = false
+    var leftEyeOn = false
+    var leftEyebrowOn = false
+    var leftPupilOn = false
+    var innerLipsOn = false
+    var noseOn = false
+    var outerLipsOn = false
+    var rightEyeOn = false
+    var rightEyebrowOn = false
+    var rightPupilOn = false
+    var noseCrestOn = false
+    var mediaLineOn = false
 
     // MARK: - Awake
 
