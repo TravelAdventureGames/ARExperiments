@@ -18,19 +18,19 @@ class FaceLandmarkDetectView: UIView {
     @IBOutlet weak var tryAgainButton: UIButton!
 
     // Booleans for switches to turn on and off specific landmarks
-    var facecontourOn = true
-    var leftEyeOn = true
-    var leftEyebrowOn = true
-    var leftPupilOn = true
-    var innerLipsOn = true
-    var noseOn = true
-    var outerLipsOn = true
-    var rightEyeOn = true
-    var rightEyebrowOn = true
-    var rightPupilOn = true
-    var noseCrestOn = true
-    var mediaLineOn = true
-    var tappingPointsOn = true
+    var facecontourOn = false
+    var leftEyeOn = false
+    var leftEyebrowOn = false
+    var leftPupilOn = false
+    var innerLipsOn = false
+    var noseOn = false
+    var outerLipsOn = false
+    var rightEyeOn = false
+    var rightEyebrowOn = false
+    var rightPupilOn = false
+    var noseCrestOn = false
+    var mediaLineOn = false
+    var tappingPointsOn = false
 
 
     // MARK: - Awake
@@ -42,6 +42,7 @@ class FaceLandmarkDetectView: UIView {
         activityIndicator.isHidden = true
         imageView.isHidden = true
         tryAgainButton.isHidden = true
+        
     }
 
     // MARK: Processing
@@ -163,7 +164,6 @@ class FaceLandmarkDetectView: UIView {
                 if noseCrestOn { features.append(noc)}
                 if mediaLineOn { features.append(ml)}
                 if facecontourOn { features.append(fc)}
-
 
 
 
