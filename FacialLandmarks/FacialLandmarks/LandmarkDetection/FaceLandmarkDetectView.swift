@@ -17,18 +17,21 @@ class FaceLandmarkDetectView: UIView {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tryAgainButton: UIButton!
 
-    var facecontourOn = false
-    var leftEyeOn = false
-    var leftEyebrowOn = false
-    var leftPupilOn = false
-    var innerLipsOn = false
-    var noseOn = false
-    var outerLipsOn = false
-    var rightEyeOn = false
-    var rightEyebrowOn = false
-    var rightPupilOn = false
-    var noseCrestOn = false
-    var mediaLineOn = false
+    // Booleans for switches to turn on and off specific landmarks
+    var facecontourOn = true
+    var leftEyeOn = true
+    var leftEyebrowOn = true
+    var leftPupilOn = true
+    var innerLipsOn = true
+    var noseOn = true
+    var outerLipsOn = true
+    var rightEyeOn = true
+    var rightEyebrowOn = true
+    var rightPupilOn = true
+    var noseCrestOn = true
+    var mediaLineOn = true
+    var tappingPointsOn = true
+
 
     // MARK: - Awake
 
@@ -88,6 +91,54 @@ class FaceLandmarkDetectView: UIView {
                 guard let noc = face.landmarks?.noseCrest else { return }
                 guard let ml = face.landmarks?.medianLine else { return }
 
+                // benodigde tappingpoints
+                // 2. Boven op hoofd
+                // 3. zijkant wenkbrauw
+                // 4. zijkant oog
+                // 5. onder oog, midden neus
+                // 6. tussen neus en lippen
+                // 7. tussen onderlip en onderkant kin
+
+                var tappingPoints: [CGPoint] = []
+                // Tappingpoint 3.
+                let rightEyebrowCGPoints = leb.pointsInImage(imageSize: image.size)
+                guard let rightEyebrowTappingpoint: CGPoint = rightEyebrowCGPoints[0] else { return }
+                tappingPoints.append(rightEyebrowTappingpoint)
+
+                //Tappingpoint 4.
+                let facecontourCGPoints = fc.pointsInImage(imageSize: image.size)
+                guard let rightsideHeadTappingpoint: CGPoint = facecontourCGPoints[10] else { return }
+                tappingPoints.append(rightsideHeadTappingpoint)
+
+                //Tappingpoint 5. We take x form pupil and y from nose, point 8 (seventh element)
+                let noseCGPoints = no.pointsInImage(imageSize: image.size)
+                let rightPupilCGPoints = rep.pointsInImage(imageSize: image.size)
+
+                guard let underEyeXcoordinate: CGFloat = rightPupilCGPoints[0].x else { return }
+                guard let underEyeYcoordinate: CGFloat = noseCGPoints[7].y else { return }
+                let underEyeTappingPoint = CGPoint(x: underEyeXcoordinate, y: underEyeYcoordinate)
+                tappingPoints.append(underEyeTappingPoint)
+
+                // Tappingpoint 6.
+                let medianLineCGPoints = ml.pointsInImage(imageSize: image.size)
+                guard let underNoseTappingpoint: CGPoint = medianLineCGPoints[4] else { return }
+                tappingPoints.append(underNoseTappingpoint)
+
+                // Tappingpoint 7.
+                guard let aboveChinYCoordinateTappingpoint: CGFloat = (medianLineCGPoints[8].y + medianLineCGPoints[7].y) / 2 else { return }
+                guard let aboveChinXCoordinateTappingpoint: CGFloat = medianLineCGPoints[8].x else { return }
+                let aboveChinTappingpoint = CGPoint(x: aboveChinXCoordinateTappingpoint, y: aboveChinYCoordinateTappingpoint)
+                tappingPoints.append(aboveChinTappingpoint)
+
+                if tappingPointsOn {
+                    for (index, tappingpoint) in tappingPoints.enumerated() {
+                        let tappingRect = CGRect(x: tappingpoint.x - 35, y: tappingpoint.y, width: 70, height: 70)
+                        if let im = UIImage(named: "number\(index + 1)") {
+                            context.cgContext.draw(im.cgImage!, in: tappingRect)
+                        }
+                    }
+                }
+
                 var features: [VNFaceLandmarkRegion2D] = []
                 if leftEyeOn { features.append(le) }
                 if leftEyebrowOn { features.append(leb) }
@@ -103,6 +154,8 @@ class FaceLandmarkDetectView: UIView {
                 if facecontourOn { features.append(fc)}
 
 
+
+
                 // Loop over al the regions. unwrapping any that have a value and ignoring any that don't
                 for case let feature in features {
                     let points = feature.pointsInImage(imageSize: image.size)
@@ -115,7 +168,6 @@ class FaceLandmarkDetectView: UIView {
                             context.cgContext.draw(im.cgImage!, in: tappingRect)
                             }
                         }
-
                 }
             }
         }

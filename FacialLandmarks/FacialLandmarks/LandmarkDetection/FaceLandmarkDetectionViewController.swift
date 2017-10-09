@@ -105,6 +105,11 @@ class FaceLandmarkDetectionViewController: UIViewController {
     @IBAction func fcChanged(_ sender: Any) {
         mainView.facecontourOn = !mainView.facecontourOn
     }
+
+    @IBAction func tappingpointsChanged(_ sender: Any) {
+        mainView.tappingPointsOn = !mainView.tappingPointsOn
+    }
+    
     
     
 

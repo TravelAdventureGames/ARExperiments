@@ -209,6 +209,12 @@
                         </label>
                     </subviews>
                 </stackView>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jah-V7-pD2">
+                    <rect key="frame" x="163" y="549" width="51" height="31"/>
+                    <connections>
+                        <action selector="tappingpointsChanged:" destination="-1" eventType="valueChanged" id="a81-0F-ua1"/>
+                    </connections>
+                </switch>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -218,11 +224,13 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="m7O-S5-GCw" secondAttribute="trailing" constant="10" id="9Mv-up-5hg"/>
                 <constraint firstItem="4xo-hL-iB8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="CrI-Hq-aS7"/>
                 <constraint firstItem="v9d-lP-CH9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Df8-OU-TUn"/>
+                <constraint firstItem="jah-V7-pD2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ElA-xO-Akd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="v9d-lP-CH9" secondAttribute="trailing" constant="10" id="HQl-wm-rS1"/>
                 <constraint firstItem="m7O-S5-GCw" firstAttribute="top" secondItem="hej-aM-ppW" secondAttribute="bottom" id="Mnb-oR-6JJ"/>
                 <constraint firstItem="m7O-S5-GCw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Rre-gy-TZv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YBQ-ki-3l3" secondAttribute="bottom" constant="30" id="Smd-mb-WUc"/>
                 <constraint firstItem="YBQ-ki-3l3" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="T42-W2-fny"/>
+                <constraint firstItem="jah-V7-pD2" firstAttribute="bottom" secondItem="4xo-hL-iB8" secondAttribute="bottom" id="TLj-AU-vfD"/>
                 <constraint firstItem="4xo-hL-iB8" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Tgb-wn-XXr"/>
                 <constraint firstItem="hej-aM-ppW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="h9M-38-GAe"/>
                 <constraint firstItem="hej-aM-ppW" firstAttribute="top" secondItem="v9d-lP-CH9" secondAttribute="bottom" id="jiQ-wo-zz7"/>
