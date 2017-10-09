@@ -100,35 +100,46 @@ class FaceLandmarkDetectView: UIView {
                 // 7. tussen onderlip en onderkant kin
 
                 var tappingPoints: [CGPoint] = []
+
                 // Tappingpoint 3.
-                let rightEyebrowCGPoints = leb.pointsInImage(imageSize: image.size)
-                guard let rightEyebrowTappingpoint: CGPoint = rightEyebrowCGPoints[0] else { return }
-                tappingPoints.append(rightEyebrowTappingpoint)
+                let rightEyebrowCGPoints = reb.pointsInImage(imageSize: image.size)
+                if rightEyebrowCGPoints.indices.contains(0) {
+                    let rightEyebrowTappingpoint: CGPoint = rightEyebrowCGPoints[0]
+                    tappingPoints.append(rightEyebrowTappingpoint)
+                }
 
                 //Tappingpoint 4.
                 let facecontourCGPoints = fc.pointsInImage(imageSize: image.size)
-                guard let rightsideHeadTappingpoint: CGPoint = facecontourCGPoints[10] else { return }
-                tappingPoints.append(rightsideHeadTappingpoint)
+                if facecontourCGPoints.indices.contains(10) {
+                    let rightsideHeadTappingpoint: CGPoint = facecontourCGPoints[10]
+                    tappingPoints.append(rightsideHeadTappingpoint)
+                }
 
                 //Tappingpoint 5. We take x form pupil and y from nose, point 8 (seventh element)
                 let noseCGPoints = no.pointsInImage(imageSize: image.size)
                 let rightPupilCGPoints = rep.pointsInImage(imageSize: image.size)
-
-                guard let underEyeXcoordinate: CGFloat = rightPupilCGPoints[0].x else { return }
-                guard let underEyeYcoordinate: CGFloat = noseCGPoints[7].y else { return }
-                let underEyeTappingPoint = CGPoint(x: underEyeXcoordinate, y: underEyeYcoordinate)
-                tappingPoints.append(underEyeTappingPoint)
+                if rightPupilCGPoints.indices.contains(0) && noseCGPoints.indices.contains(7) {
+                    let underEyeXcoordinate: CGFloat = rightPupilCGPoints[0].x
+                    let underEyeYcoordinate: CGFloat = noseCGPoints[7].y
+                    let underEyeTappingPoint = CGPoint(x: underEyeXcoordinate, y: underEyeYcoordinate)
+                    tappingPoints.append(underEyeTappingPoint)
+                }
 
                 // Tappingpoint 6.
                 let medianLineCGPoints = ml.pointsInImage(imageSize: image.size)
-                guard let underNoseTappingpoint: CGPoint = medianLineCGPoints[4] else { return }
-                tappingPoints.append(underNoseTappingpoint)
+                if medianLineCGPoints.indices.contains(4) {
+                    let underNoseTappingpoint: CGPoint = medianLineCGPoints[4]
+                    tappingPoints.append(underNoseTappingpoint)
+                }
 
                 // Tappingpoint 7.
-                guard let aboveChinYCoordinateTappingpoint: CGFloat = (medianLineCGPoints[8].y + medianLineCGPoints[7].y) / 2 else { return }
-                guard let aboveChinXCoordinateTappingpoint: CGFloat = medianLineCGPoints[8].x else { return }
-                let aboveChinTappingpoint = CGPoint(x: aboveChinXCoordinateTappingpoint, y: aboveChinYCoordinateTappingpoint)
-                tappingPoints.append(aboveChinTappingpoint)
+                if medianLineCGPoints.indices.contains(8) {
+                    let aboveChinYCoordinateTappingpoint: CGFloat = (medianLineCGPoints[8].y + medianLineCGPoints[7].y) / 2
+                    let aboveChinXCoordinateTappingpoint: CGFloat = medianLineCGPoints[8].x
+                    let aboveChinTappingpoint = CGPoint(x: aboveChinXCoordinateTappingpoint, y: aboveChinYCoordinateTappingpoint)
+                    tappingPoints.append(aboveChinTappingpoint)
+                }
+
 
                 if tappingPointsOn {
                     for (index, tappingpoint) in tappingPoints.enumerated() {
